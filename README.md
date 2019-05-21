@@ -12,10 +12,10 @@ yarn install
 
 ## Running
 ```bash
-# 开发
+# dev
 $ npm run dev
 
-# 生产环境运行
+# production
 $ npm run start
 ```
 ## Testing
