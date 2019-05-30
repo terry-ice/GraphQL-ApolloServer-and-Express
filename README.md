@@ -1,7 +1,6 @@
 
 
 ## Install
-
 ```bash
 # with npm
 npm install
@@ -42,6 +41,7 @@ you can see
 ![](./static/hello-terry.jpg)
 
 
+// mongodb://localhost:27017
 ## Features
 
 - [x] Babel 7  -- 完成✨✨🎉🎉

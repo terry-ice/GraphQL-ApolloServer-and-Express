@@ -1,0 +1,63 @@
+type Extends {
+  id: ID! @id
+  name: String
+  user: String
+}
+
+type Meta {
+  id: ID! @id
+  views: Int
+  likes: Int
+  comments: Int
+}
+
+type Categories {
+  id: ID! @id
+  name: String
+  slug: String
+  description: String
+  extends: [Extends] @relation(link: INLINE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Tags {
+  id: ID! @id
+  name: String
+  slug: String
+  description: String
+  extends: [Extends] @relation(link: INLINE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Category {
+  id: ID! @id
+  pid: Int
+}
+
+type User {
+  id: ID! @id
+  name: String!
+  email: String! @unique
+  password: String!
+  extends: [Extends] @relation(link: INLINE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Article {
+  id: ID! @id
+  title: String!
+  description: String
+  keywords: String
+  content: String
+  thumbnail: String
+  state: String
+  public: String
+  meta:  [Meta] @relation(link: INLINE)
+  password: String
+  extends: [Extends] @relation(link: INLINE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}

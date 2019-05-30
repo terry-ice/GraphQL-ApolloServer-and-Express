@@ -7,7 +7,7 @@
 
 import cookieParser from 'cookie-parser';
 require('dotenv').config({ path: '../variables.env' });
-import createServer from './createServer';
+import createServer from './server';
 
 const server = createServer();
 

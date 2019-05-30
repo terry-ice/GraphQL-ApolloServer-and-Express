@@ -7,26 +7,20 @@
 
 // https://github.com/prisma/graphql-yoga/blob/master/examples/hello-world/index.js
 import { GraphQLServer } from 'graphql-yoga';
-const typeDefs = `
-  type Query {
-    hello(name: String): String!
-  }
-`;
-
-const resolvers = {
-  Query: {
-    hello: (_, { name }) => `Hello ${name || 'World by terry!'}`,
-  },
-};
-
+const Mutation = require('./graphql/resolvers/Mutation');
+const Query = require('./graphql/resolvers/Query');
+const db = require('./graphql/db');
 function createServer() {
   return new GraphQLServer({
-    typeDefs,
-    resolvers,
+    typeDefs: 'src/graphql/schema.graphql',
+    resolvers: {
+      Mutation,
+      Query,
+    },
     resolverValidationOptions: {
       requireResolversForResolveType: false,
     },
-    context: req => ({ ...req }),
+    context: req => ({ ...req, db  }),
   });
 }
 export default createServer;
