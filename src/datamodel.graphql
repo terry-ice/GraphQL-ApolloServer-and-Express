@@ -1,7 +1,9 @@
 type Extends {
   id: ID! @id
   name: String
-  user: String
+  value: String
+  label: Label @relation(name: "LabelExtends")
+  # category: Category! @relation(name: "CategoryExtends")
 }
 
 type Meta {
@@ -11,30 +13,26 @@ type Meta {
   comments: Int
 }
 
-# type Categories {
-#   id: ID! @id
-#   name: String
-#   slug: String
-#   description: String
-#   extends: [Extends] @relation(link: INLINE)
-#   createdAt: DateTime! @createdAt
-#   updatedAt: DateTime! @updatedAt
-# }
-
-type Tags {
+type Category {
   id: ID! @id
   name: String
   slug: String
   description: String
-  extends: [Extends] @relation(link: INLINE)
+  # extends: [Extends!] @relation(name: "CategoryExtends", onDelete: CASCADE, link: INLINE)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
 
-type Category {
+type Label {
   id: ID! @id
-  pid: Int
+  name: String
+  slug: String
+  description: String
+  extends: [Extends] @relation(name: "LabelExtends", link: INLINE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
+
 
 type User {
   id: ID! @id
@@ -56,8 +54,7 @@ type Article {
   state: String
   public: String
   meta:  [Meta] @relation(link: INLINE)
-  password: String
-  extends: [Extends] @relation(link: INLINE)
+  label:  [Label] @relation(link: INLINE)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }

@@ -1,5 +1,13 @@
 # import * from './prisma.graphql'
-
+type Mutation {
+  createLabel(
+    name: String
+    description: String
+    slug: String
+    extends: ExtendsUpdateManyInput
+  ): Label!
+}
 type Query {
-  tag(where: TagWhereUniqueInput): Tag
+  label(where: LabelWhereUniqueInput): Label
+  labels: [Label]!
 }

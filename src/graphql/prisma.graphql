@@ -6,19 +6,13 @@
 #  */
 
 
-type AggregateTag {
+type AggregateLabel {
   count: Int!
 }
 
 type BatchPayload {
   """The number of nodes that have been affected by the Batch operation."""
   count: Long!
-}
-
-type Extends {
-  id: ID!
-  name: String
-  user: String
 }
 
 type Meta {
@@ -28,118 +22,76 @@ type Meta {
   comments: Int
 }
 
-type Tag implements Node {
+type Label implements Node {
   id: ID!
   name: String!
   description: String!
   slug: String!
+  extends(where: ExtendsWhereInput, orderBy: ExtendsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Extends!]
 }
 
 """A connection to a list of items."""
-type TagConnection {
+type LabelConnection {
   """Information to aid in pagination."""
   pageInfo: PageInfo!
 
   """A list of edges."""
-  edges: [TagEdge]!
-  aggregate: AggregateTag!
+  edges: [LabelEdge]!
+  aggregate: AggregateLabel!
 }
 
-input TagCreateInput {
-  name: String!
-  description: String!
-  slug: String!
+
+input LabelCreateInput {
+  name: String
+  description: String
+  slug: String
+  extends: ExtendsUpdateManyInput
 }
 
-"""An edge in a connection."""
-type TagEdge {
-  """The item at the end of the edge."""
-  node: Tag!
-
-  """A cursor for use in pagination."""
-  cursor: String!
-}
-
-enum TagOrderByInput {
-  id_ASC
-  id_DESC
-  title_ASC
-  title_DESC
-  description_ASC
-  description_DESC
-  image_ASC
-  image_DESC
-  largeImage_ASC
-  largeImage_DESC
-  price_ASC
-  price_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-  createdAt_ASC
-  createdAt_DESC
-}
-
-type TagPreviousValues {
+# Extends-start
+type Extends implements Node {
   id: ID!
+  name: String!
+  value: String!
+}
+
+input ExtendsCreateInput {
   name: String
-  slug: String
-  description: String
+  value: String
+}
+input ExtendsUpdateInput {
+  name: String
+  value: String
 }
 
-type TagSubscriptionPayload {
-  mutation: MutationType!
-  node: Tag
-  updatedFields: [String!]
-  previousValues: TagPreviousValues
+input ExtendsUpdateDataInput {
+  name: String
+  value: String
 }
 
-input TagSubscriptionWhereInput {
+input ExtendsWhereUniqueInput {
+  id: ID
+}
+
+input ExtendsUpdateWithWhereUniqueNestedInput {
+  where: ExtendsWhereUniqueInput
+  data: ExtendsUpdateDataInput!
+}
+
+input ExtendsUpdateManyInput {
+  create:  [ExtendsCreateInput]
+  connect: [ExtendsWhereUniqueInput]
+}
+
+input ExtendsWhereInput {
   """Logical AND on all given filters."""
-  AND: [TagSubscriptionWhereInput!]
+  AND: [ExtendsWhereInput!]
 
   """Logical OR on all given filters."""
-  OR: [TagSubscriptionWhereInput!]
+  OR: [ExtendsWhereInput!]
 
   """Logical NOT on all given filters combined by AND."""
-  NOT: [TagSubscriptionWhereInput!]
-
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
-  mutation_in: [MutationType!]
-
-  """
-  The subscription event gets only dispatched when one of the updated fields names is included in this list
-  """
-  updatedFields_contains: String
-
-  """
-  The subscription event gets only dispatched when all of the field names included in this list have been updated
-  """
-  updatedFields_contains_every: [String!]
-
-  """
-  The subscription event gets only dispatched when some of the field names included in this list have been updated
-  """
-  updatedFields_contains_some: [String!]
-  node: TagWhereInput
-}
-
-input TagUpdateInput {
-  name: String
-  slug: String
-  description: String
-}
-
-input TagWhereInput {
-  """Logical AND on all given filters."""
-  AND: [TagWhereInput!]
-
-  """Logical OR on all given filters."""
-  OR: [TagWhereInput!]
-
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [TagWhereInput!]
+  NOT: [ExtendsWhereInput!]
   id: ID
 
   """All values that are not equal to given value."""
@@ -180,46 +132,164 @@ input TagWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  title: String
+}
+enum ExtendsOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+}
+# Extends-end
+
+
+"""An edge in a connection."""
+type LabelEdge {
+  """The item at the end of the edge."""
+  node: Label!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum LabelOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+input LabelSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [LabelSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [LabelSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [LabelSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: LabelWhereInput
+}
+
+input LabelUpdateInput {
+  name: String
+  slug: String
+  description: String
+  extends: ExtendsUpdateManyInput
+}
+
+input LabelWhereInput {
+  """Logical AND on all given filters."""
+  AND: [LabelWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [LabelWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [LabelWhereInput!]
+  id: ID
 
   """All values that are not equal to given value."""
-  title_not: String
+  id_not: ID
 
   """All values that are contained in given list."""
-  title_in: [String!]
+  id_in: [ID!]
 
   """All values that are not contained in given list."""
-  title_not_in: [String!]
+  id_not_in: [ID!]
 
   """All values less than the given value."""
-  title_lt: String
+  id_lt: ID
 
   """All values less than or equal the given value."""
-  title_lte: String
+  id_lte: ID
 
   """All values greater than the given value."""
-  title_gt: String
+  id_gt: ID
 
   """All values greater than or equal the given value."""
-  title_gte: String
+  id_gte: ID
 
   """All values containing the given string."""
-  title_contains: String
+  id_contains: ID
 
   """All values not containing the given string."""
-  title_not_contains: String
+  id_not_contains: ID
 
   """All values starting with the given string."""
-  title_starts_with: String
+  id_starts_with: ID
 
   """All values not starting with the given string."""
-  title_not_starts_with: String
+  id_not_starts_with: ID
 
   """All values ending with the given string."""
-  title_ends_with: String
+  id_ends_with: ID
 
   """All values not ending with the given string."""
-  title_not_ends_with: String
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
   description: String
 
   """All values that are not equal to given value."""
@@ -260,111 +330,9 @@ input TagWhereInput {
 
   """All values not ending with the given string."""
   description_not_ends_with: String
-  image: String
-
-  """All values that are not equal to given value."""
-  image_not: String
-
-  """All values that are contained in given list."""
-  image_in: [String!]
-
-  """All values that are not contained in given list."""
-  image_not_in: [String!]
-
-  """All values less than the given value."""
-  image_lt: String
-
-  """All values less than or equal the given value."""
-  image_lte: String
-
-  """All values greater than the given value."""
-  image_gt: String
-
-  """All values greater than or equal the given value."""
-  image_gte: String
-
-  """All values containing the given string."""
-  image_contains: String
-
-  """All values not containing the given string."""
-  image_not_contains: String
-
-  """All values starting with the given string."""
-  image_starts_with: String
-
-  """All values not starting with the given string."""
-  image_not_starts_with: String
-
-  """All values ending with the given string."""
-  image_ends_with: String
-
-  """All values not ending with the given string."""
-  image_not_ends_with: String
-  largeImage: String
-
-  """All values that are not equal to given value."""
-  largeImage_not: String
-
-  """All values that are contained in given list."""
-  largeImage_in: [String!]
-
-  """All values that are not contained in given list."""
-  largeImage_not_in: [String!]
-
-  """All values less than the given value."""
-  largeImage_lt: String
-
-  """All values less than or equal the given value."""
-  largeImage_lte: String
-
-  """All values greater than the given value."""
-  largeImage_gt: String
-
-  """All values greater than or equal the given value."""
-  largeImage_gte: String
-
-  """All values containing the given string."""
-  largeImage_contains: String
-
-  """All values not containing the given string."""
-  largeImage_not_contains: String
-
-  """All values starting with the given string."""
-  largeImage_starts_with: String
-
-  """All values not starting with the given string."""
-  largeImage_not_starts_with: String
-
-  """All values ending with the given string."""
-  largeImage_ends_with: String
-
-  """All values not ending with the given string."""
-  largeImage_not_ends_with: String
-  price: Int
-
-  """All values that are not equal to given value."""
-  price_not: Int
-
-  """All values that are contained in given list."""
-  price_in: [Int!]
-
-  """All values that are not contained in given list."""
-  price_not_in: [Int!]
-
-  """All values less than the given value."""
-  price_lt: Int
-
-  """All values less than or equal the given value."""
-  price_lte: Int
-
-  """All values greater than the given value."""
-  price_gt: Int
-
-  """All values greater than or equal the given value."""
-  price_gte: Int
 }
 
-input TagWhereUniqueInput {
+input LabelWhereUniqueInput {
   id: ID
 }
 
@@ -375,7 +343,7 @@ Long can represent values between -(2^63) and 2^63 - 1.
 scalar Long
 
 type Mutation {
-  createTag(data: TagCreateInput!): Tag!
+  createLabel(data: LabelCreateInput!): Label!
 }
 
 enum MutationType {
@@ -406,17 +374,10 @@ type PageInfo {
 }
 
 type Query {
-  tags(where: TagWhereInput, orderBy: TagOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Tag]!
-  tag(where: TagWhereUniqueInput!): Tag
+  labels(where: LabelWhereInput, orderBy: LabelOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Label]
+  label(where: LabelWhereUniqueInput!): Label
   node(
     """The ID of an object"""
     id: ID!
   ): Node
-}
-
-
-type User implements Node {
-  id: ID!
-  name: String!
-  email: String!
 }
