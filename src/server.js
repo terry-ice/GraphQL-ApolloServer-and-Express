@@ -9,7 +9,7 @@
 import { GraphQLServer } from 'graphql-yoga';
 const Mutation = require('./graphql/resolvers/Mutation');
 const Query = require('./graphql/resolvers/Query');
-const db = require('./graphql/db');
+import db from './graphql/db';
 function createServer() {
   return new GraphQLServer({
     typeDefs: 'src/graphql/schema.graphql',

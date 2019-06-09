@@ -11,15 +11,15 @@ type Meta {
   comments: Int
 }
 
-type Categories {
-  id: ID! @id
-  name: String
-  slug: String
-  description: String
-  extends: [Extends] @relation(link: INLINE)
-  createdAt: DateTime! @createdAt
-  updatedAt: DateTime! @updatedAt
-}
+# type Categories {
+#   id: ID! @id
+#   name: String
+#   slug: String
+#   description: String
+#   extends: [Extends] @relation(link: INLINE)
+#   createdAt: DateTime! @createdAt
+#   updatedAt: DateTime! @updatedAt
+# }
 
 type Tags {
   id: ID! @id
