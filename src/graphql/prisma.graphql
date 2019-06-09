@@ -10,16 +10,17 @@ type AggregateLabel {
   count: Int!
 }
 
+type AggregateArticle {
+  count: Int!
+}
+
+type AggregateCategory {
+  count: Int!
+}
+
 type BatchPayload {
   """The number of nodes that have been affected by the Batch operation."""
   count: Long!
-}
-
-type Meta {
-  id: ID!
-  views: Int
-  likes: Int
-  comments: Int
 }
 
 type Label implements Node {
@@ -28,24 +29,6 @@ type Label implements Node {
   description: String!
   slug: String!
   extends(where: ExtendsWhereInput, orderBy: ExtendsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Extends!]
-}
-
-"""A connection to a list of items."""
-type LabelConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [LabelEdge]!
-  aggregate: AggregateLabel!
-}
-
-
-input LabelCreateInput {
-  name: String
-  description: String
-  slug: String
-  extends: ExtendsUpdateManyInput
 }
 
 # Extends-start
@@ -74,13 +57,15 @@ input ExtendsWhereUniqueInput {
 }
 
 input ExtendsUpdateWithWhereUniqueNestedInput {
-  where: ExtendsWhereUniqueInput
+  where: ExtendsWhereUniqueInput!
   data: ExtendsUpdateDataInput!
 }
 
 input ExtendsUpdateManyInput {
   create:  [ExtendsCreateInput]
-  connect: [ExtendsWhereUniqueInput]
+  connect: [ExtendsWhereUniqueInput!]
+  delete:  [ExtendsWhereUniqueInput!]
+  update:  [ExtendsUpdateWithWhereUniqueNestedInput!]
 }
 
 input ExtendsWhereInput {
@@ -142,7 +127,29 @@ enum ExtendsOrderByInput {
 # Extends-end
 
 
-"""An edge in a connection."""
+# Label-start
+type LabelConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [LabelEdge]!
+  aggregate: AggregateLabel!
+}
+
+input LabelCreateInput {
+  name: String
+  description: String
+  slug: String
+  extends: ExtendsUpdateManyInput
+}
+input LabelUpdateDataInput {
+  name: String
+  description: String
+  slug: String
+  extends: ExtendsUpdateManyInput
+}
+
 type LabelEdge {
   """The item at the end of the edge."""
   node: Label!
@@ -199,6 +206,15 @@ input LabelUpdateInput {
   slug: String
   description: String
   extends: ExtendsUpdateManyInput
+}
+input LabelUpdateManyInput {
+  create:  [ExtendsCreateInput]
+  connect: [ExtendsWhereUniqueInput]
+}
+
+input LabelUpdateWithWhereUniqueNestedInput {
+  where: LabelWhereUniqueInput!
+  data: LabelUpdateDataInput!
 }
 
 input LabelWhereInput {
@@ -335,16 +351,744 @@ input LabelWhereInput {
 input LabelWhereUniqueInput {
   id: ID
 }
+# Label-end
 
-"""
-The `Long` scalar type represents non-fractional signed whole numeric values.
-Long can represent values between -(2^63) and 2^63 - 1.
-"""
-scalar Long
-
-type Mutation {
-  createLabel(data: LabelCreateInput!): Label!
+# Article-start
+type Article implements Node {
+  id: ID!
+  title: String!
+  description: String
+  keywords: String
+  content: String!
+  thumbnail: String
+  state: String
+  public: String
+  meta(where: MetaWhereInput, orderBy: MetaOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Meta!]
+  label(where: LabelWhereInput, orderBy: LabelOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Label!]
 }
+
+type ArticleConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ArticleEdge]!
+  aggregate: AggregateArticle!
+}
+
+type ArticleEdge {
+  """The item at the end of the edge."""
+  node: Article!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+input ArticleWhereUniqueInput {
+  id: ID
+}
+
+enum ArticleOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+input ArticleCreateInput {
+  title: String
+  description: String
+  keywords: String
+  content: String
+  thumbnail: String
+  state: String
+  public: String
+  meta: MetaUpdateManyInput
+  label: LabelUpdateManyInput
+}
+
+input ArticleUpdateInput {
+  title: String
+  description: String
+  keywords: String
+  content: String
+  thumbnail: String
+  state: String
+  public: String
+  meta: MetaUpdateManyInput
+  label: LabelUpdateManyInput
+}
+
+input ArticleUpdateDataInput {
+  title: String
+  description: String
+  keywords: String
+  content: String
+  thumbnail: String
+  state: String
+  public: String
+  meta: MetaUpdateManyInput
+  label: LabelUpdateManyInput
+}
+
+input ArticleUpdateWithWhereUniqueNestedInput {
+  where: ArticleWhereUniqueInput!
+  data: ArticleUpdateDataInput!
+}
+
+input ArticleUpdateManyInput {
+  create:  [ArticleCreateInput]
+  connect: [ArticleWhereUniqueInput!]
+  disconnect: [ArticleWhereUniqueInput!]
+  delete: [ArticleWhereUniqueInput!]
+  update: [ArticleUpdateWithWhereUniqueNestedInput!]
+}
+
+input ArticleWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ArticleWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ArticleWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ArticleWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  title: String
+
+  """All values that are not equal to given value."""
+  title_not: String
+
+  """All values that are contained in given list."""
+  title_in: [String!]
+
+  """All values that are not contained in given list."""
+  title_not_in: [String!]
+
+  """All values less than the given value."""
+  title_lt: String
+
+  """All values less than or equal the given value."""
+  title_lte: String
+
+  """All values greater than the given value."""
+  title_gt: String
+
+  """All values greater than or equal the given value."""
+  title_gte: String
+
+  """All values containing the given string."""
+  title_contains: String
+
+  """All values not containing the given string."""
+  title_not_contains: String
+
+  """All values starting with the given string."""
+  title_starts_with: String
+
+  """All values not starting with the given string."""
+  title_not_starts_with: String
+
+  """All values ending with the given string."""
+  title_ends_with: String
+
+  """All values not ending with the given string."""
+  title_not_ends_with: String
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+}
+
+input ArticleSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ArticleSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ArticleSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ArticleSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: ArticleWhereInput
+}
+
+# Article-end
+
+# Category-start
+type Category implements Node {
+  id: ID!
+  name: String
+  slug: String
+  description: String
+  extends(where: ExtendsWhereInput, orderBy: ExtendsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Extends!]
+}
+
+type CategoryConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [CategoryEdge]!
+  aggregate: AggregateCategory!
+}
+
+type CategoryEdge {
+  """The item at the end of the edge."""
+  node: Category!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+input CategoryWhereUniqueInput {
+  id: ID
+}
+
+enum CategoryOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+input CategoryCreateInput {
+  name: String
+  slug: String
+  description: String
+  extends: ExtendsUpdateManyInput
+}
+
+input CategoryUpdateInput {
+  name: String
+  slug: String
+  description: String
+  extends: ExtendsUpdateManyInput
+}
+
+input CategoryUpdateDataInput {
+  name: String
+  slug: String
+  description: String
+  extends: ExtendsUpdateManyInput
+}
+
+input CategoryUpdateWithWhereUniqueNestedInput {
+  where: CategoryWhereUniqueInput!
+  data: CategoryUpdateDataInput!
+}
+
+input CategoryUpdateManyInput {
+  create:  [CategoryCreateInput]
+  connect: [CategoryWhereUniqueInput!]
+  disconnect: [CategoryWhereUniqueInput!]
+  delete: [CategoryWhereUniqueInput!]
+  update: [CategoryUpdateWithWhereUniqueNestedInput!]
+}
+
+input CategoryWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CategoryWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CategoryWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CategoryWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  title: String
+
+  """All values that are not equal to given value."""
+  title_not: String
+
+  """All values that are contained in given list."""
+  title_in: [String!]
+
+  """All values that are not contained in given list."""
+  title_not_in: [String!]
+
+  """All values less than the given value."""
+  title_lt: String
+
+  """All values less than or equal the given value."""
+  title_lte: String
+
+  """All values greater than the given value."""
+  title_gt: String
+
+  """All values greater than or equal the given value."""
+  title_gte: String
+
+  """All values containing the given string."""
+  title_contains: String
+
+  """All values not containing the given string."""
+  title_not_contains: String
+
+  """All values starting with the given string."""
+  title_starts_with: String
+
+  """All values not starting with the given string."""
+  title_not_starts_with: String
+
+  """All values ending with the given string."""
+  title_ends_with: String
+
+  """All values not ending with the given string."""
+  title_not_ends_with: String
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+}
+
+input CategorySubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CategorySubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CategorySubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CategorySubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: CategoryWhereInput
+}
+
+# Category-end
+
+
+
+# Meta-start
+type Meta implements Node {
+  id: ID!
+  views: Int
+  likes: Int
+  comments: Int
+}
+
+input MetaCreateInput {
+  views: Int
+  likes: Int
+  comments: Int
+}
+input MetaUpdateInput {
+  views: Int
+  likes: Int
+  comments: Int
+}
+
+input MetaUpdateDataInput {
+  views: Int
+  likes: Int
+  comments: Int
+}
+
+input MetaWhereUniqueInput {
+  id: ID
+}
+
+input MetaUpdateWithWhereUniqueNestedInput {
+  where: MetaWhereUniqueInput!
+  data: MetaUpdateDataInput!
+}
+
+input MetaUpdateManyInput {
+  create:  [MetaCreateInput]
+  connect: [MetaWhereUniqueInput!]
+  delete:  [MetaWhereUniqueInput!]
+  update:  [MetaUpdateWithWhereUniqueNestedInput!]
+}
+
+input MetaWhereInput {
+  """Logical AND on all given filters."""
+  AND: [MetaWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [MetaWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [MetaWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+}
+enum MetaOrderByInput {
+  id_ASC
+  id_DESC
+  likes_ASC
+  likes_DESC
+  views_ASC
+  views_DESC
+}
+# Meta-end
+
+# User-start
+
+type User implements Node {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+}
+
+input UserCreateInput {
+  name: String
+  email: String
+  password: String
+}
+input UserUpdateInput {
+  name: String
+  email: String
+  password: String
+}
+
+input UserUpdateDataInput {
+  name: String
+  email: String
+  password: String
+}
+
+input UserWhereUniqueInput {
+  id: ID
+}
+
+input UserUpdateWithWhereUniqueNestedInput {
+  where: UserWhereUniqueInput!
+  data: UserUpdateDataInput!
+}
+
+input UserUpdateManyInput {
+  create: [UserCreateInput]
+  connect: [UserWhereUniqueInput!]
+  delete: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueNestedInput!]
+}
+
+input UserWhereInput {
+  """
+  Logical AND on all given filters.
+  """
+  AND: [UserWhereInput!]
+
+  """
+  Logical OR on all given filters.
+  """
+  OR: [UserWhereInput!]
+
+  """
+  Logical NOT on all given filters combined by AND.
+  """
+  NOT: [UserWhereInput!]
+  id: ID
+
+  """
+  All values that are not equal to given value.
+  """
+  id_not: ID
+
+  """
+  All values that are contained in given list.
+  """
+  id_in: [ID!]
+
+  """
+  All values that are not contained in given list.
+  """
+  id_not_in: [ID!]
+
+  """
+  All values less than the given value.
+  """
+  id_lt: ID
+
+  """
+  All values less than or equal the given value.
+  """
+  id_lte: ID
+
+  """
+  All values greater than the given value.
+  """
+  id_gt: ID
+
+  """
+  All values greater than or equal the given value.
+  """
+  id_gte: ID
+
+  """
+  All values containing the given string.
+  """
+  id_contains: ID
+
+  """
+  All values not containing the given string.
+  """
+  id_not_contains: ID
+
+  """
+  All values starting with the given string.
+  """
+  id_starts_with: ID
+
+  """
+  All values not starting with the given string.
+  """
+  id_not_starts_with: ID
+
+  """
+  All values ending with the given string.
+  """
+  id_ends_with: ID
+
+  """
+  All values not ending with the given string.
+  """
+  id_not_ends_with: ID
+}
+enum UserOrderByInput {
+  id_ASC
+  id_DESC
+  email_ASC
+  email_DESC
+}
+# User-end
+
+scalar Long
 
 enum MutationType {
   CREATED
@@ -373,9 +1117,21 @@ type PageInfo {
   endCursor: String
 }
 
+type Mutation {
+  createLabel(data: LabelCreateInput!): Label!
+  createArticle(data: ArticleCreateInput!): Article!
+  createCategory(data: CategoryCreateInput!): Category!
+  createUser(data: UserCreateInput!): User!
+}
+
 type Query {
-  labels(where: LabelWhereInput, orderBy: LabelOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Label]
-  label(where: LabelWhereUniqueInput!): Label
+  labels(where: LabelWhereInput, orderBy: LabelOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Label!]
+  label(where: LabelWhereUniqueInput!): Label!
+  articles(where: ArticleWhereInput, orderBy: ArticleOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Article!]
+  article(where: ArticleWhereUniqueInput!): Article!
+  categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Category!]
+  category(where: CategoryWhereUniqueInput!): Category!
+  user(where: UserWhereUniqueInput!): User!
   node(
     """The ID of an object"""
     id: ID!

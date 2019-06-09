@@ -1,15 +1,19 @@
-const { forwardTo } = require("prisma-binding");
-// const { hasPermission } = require("../utils");
+/*
+ * @Author: terry
+ * @Date: 2019-06-09 13:46:04
+ * @Last Modified by: https://github.com/terry-ice
+ * @Last Modified time: 2019-06-09 21:28:41
+ */
+
+import { forwardTo } from 'prisma-binding';
+
 const Query = {
-  async label(parent, args, ctx, info) {
-    const items = await ctx.db.query.label();
-    return items;
-  },
-  async labels(parent, args, ctx, info) {
-    const items = await ctx.db.query.labels({}, info);
-    console.log(items,'items')
-    return items;
-  },
+  article: forwardTo('db'),
+  articles: forwardTo('db'),
+  label: forwardTo('db'),
+  labels: forwardTo('db'),
+  categories: forwardTo('db'),
+  category: forwardTo('db')
 };
 
-module.exports = Query;
+export default Query;

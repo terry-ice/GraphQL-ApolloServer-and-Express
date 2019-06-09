@@ -1,9 +1,8 @@
 type Extends {
   id: ID! @id
-  name: String
+  name: String @unique
   value: String
   label: Label @relation(name: "LabelExtends")
-  # category: Category! @relation(name: "CategoryExtends")
 }
 
 type Meta {
@@ -15,46 +14,45 @@ type Meta {
 
 type Category {
   id: ID! @id
-  name: String
+  name: String @unique
   slug: String
   description: String
-  # extends: [Extends!] @relation(name: "CategoryExtends", onDelete: CASCADE, link: INLINE)
+  extends: [Extends!] @relation(link: INLINE)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
 
 type Label {
   id: ID! @id
-  name: String
+  name: String @unique
   slug: String
   description: String
-  extends: [Extends] @relation(name: "LabelExtends", link: INLINE)
+  extends: [Extends!] @relation(name: "LabelExtends", link: INLINE)
+  article: Article @relation(name: "ArticleLabel")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
 
-
 type User {
   id: ID! @id
-  name: String!
   email: String! @unique
   password: String!
-  extends: [Extends] @relation(link: INLINE)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
 
 type Article {
   id: ID! @id
-  title: String!
+  title: String! @unique
   description: String
   keywords: String
   content: String
   thumbnail: String
   state: String
   public: String
-  meta:  [Meta] @relation(link: INLINE)
-  label:  [Label] @relation(link: INLINE)
+  extends: [Extends!] @relation(name: "ArticleExtends", link: INLINE)
+  meta:  [Meta!] @relation(name: "MetaArticle", link: INLINE)
+  label: [Label!] @relation(name: "ArticleLabel",link: INLINE)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }

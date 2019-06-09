@@ -2,15 +2,16 @@
  * @Author: terry
  * @Date: 2019-05-21 15:16:30
  * @Last Modified by: https://github.com/terry-ice
- * @Last Modified time: 2019-05-21 15:41:11
+ * @Last Modified time: 2019-06-09 18:16:10
  */
 
-// https://github.com/prisma/graphql-yoga/blob/master/examples/hello-world/index.js
+// demo https://github.com/prisma/graphql-yoga/blob/master/examples/hello-world/index.js
+
 import { GraphQLServer } from 'graphql-yoga';
-const Mutation = require('./graphql/resolvers/Mutation');
-const Query = require('./graphql/resolvers/Query');
+import Mutation from './graphql/resolvers/Mutation'
+import Query from './graphql/resolvers/Query'
 import db from './graphql/db';
-// console.log(db);
+
 function createServer() {
   return new GraphQLServer({
     typeDefs: 'src/graphql/schema.graphql',
@@ -24,4 +25,5 @@ function createServer() {
     context: req => ({ ...req, db  }),
   });
 }
+
 export default createServer;

@@ -6,8 +6,30 @@ type Mutation {
     slug: String
     extends: ExtendsUpdateManyInput
   ): Label!
+  createArticle(
+    title: String
+    description: String
+    keywords: String
+    content: String
+    thumbnail: String
+    state: String
+    public: String
+    meta: MetaUpdateManyInput
+    label: LabelUpdateManyInput
+  ): Article!
+  createCategory(
+    name: String
+    slug: String
+    description: String
+    extends: ExtendsUpdateManyInput
+  ): Category!
 }
+
 type Query {
   label(where: LabelWhereUniqueInput): Label
   labels: [Label]!
+  article(where: ArticleWhereUniqueInput): Article
+  articles: [Article]!
+  categories(where: CategoryWhereUniqueInput): Category
+  category: [Category]!
 }
