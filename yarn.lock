@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@apollographql/apollo-tools@^0.3.6-alpha.1":
+"@apollographql/apollo-tools@^0.3.6":
   version "0.3.7"
-  resolved "https://registry.npm.taobao.org/@apollographql/apollo-tools/download/@apollographql/apollo-tools-0.3.7.tgz#3bc9c35b9fff65febd4ddc0c1fc04677693a3d40"
-  integrity sha1-O8nDW5//Zf69TdwMH8BGd2k6PUA=
+  resolved "https://registry.yarnpkg.com/@apollographql/apollo-tools/-/apollo-tools-0.3.7.tgz#3bc9c35b9fff65febd4ddc0c1fc04677693a3d40"
+  integrity sha512-+ertvzAwzkYmuUtT8zH3Zi6jPdyxZwOgnYaZHY7iLnMVJDhQKWlkyjLMF8wyzlPiEdDImVUMm5lOIBZo7LkGlg==
   dependencies:
     apollo-env "0.5.1"
 
-"@apollographql/graphql-playground-html@^1.6.6":
-  version "1.6.18"
-  resolved "https://registry.npm.taobao.org/@apollographql/graphql-playground-html/download/@apollographql/graphql-playground-html-1.6.18.tgz#c0763b4b5a64d4a5316ae6adc2a3a61af58df402"
-  integrity sha1-wHY7S1pk1KUxauatwqOmGvWN9AI=
+"@apollographql/graphql-playground-html@1.6.20":
+  version "1.6.20"
+  resolved "https://registry.yarnpkg.com/@apollographql/graphql-playground-html/-/graphql-playground-html-1.6.20.tgz#bf9f2acdf319c0959fad8ec1239741dd2ead4e8d"
+  integrity sha512-3LWZa80HcP70Pl+H4KhLDJ7S0px+9/c8GTXdl6SpunRecUaB27g/oOQnAjNHLHdbWuGE0uyqcuGiTfbKB3ilaQ==
 
 "@babel/code-frame@^7.0.0":
   version "7.0.0"
@@ -1010,13 +1010,13 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
-apollo-cache-control@0.6.0:
-  version "0.6.0"
-  resolved "https://registry.npm.taobao.org/apollo-cache-control/download/apollo-cache-control-0.6.0.tgz#df22db28f850ea90a5722f5e92654d30c96e7f91"
-  integrity sha1-3yLbKPhQ6pClci9ekmVNMMluf5E=
+apollo-cache-control@0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/apollo-cache-control/-/apollo-cache-control-0.7.2.tgz#b8852422d973c582493e85c776abc9c660090162"
+  integrity sha512-7prjFN8H9lRE0npqGG8kM3XICvNCcgQt6eCy8kkcPOIZwM+F8m8ShjEfNF9UWW32i+poOk3G67HegPRyjCc6/Q==
   dependencies:
-    apollo-server-env "2.3.0"
-    graphql-extensions "0.6.0"
+    apollo-server-env "2.4.0"
+    graphql-extensions "0.7.2"
 
 apollo-cache-control@^0.1.0:
   version "0.1.1"
@@ -1025,41 +1025,32 @@ apollo-cache-control@^0.1.0:
   dependencies:
     graphql-extensions "^0.0.x"
 
-apollo-datasource@0.4.0:
-  version "0.4.0"
-  resolved "https://registry.npm.taobao.org/apollo-datasource/download/apollo-datasource-0.4.0.tgz#f042641fd2593fa5f4f002fc30d1fb1a20284df8"
-  integrity sha1-8EJkH9JZP6X08AL8MNH7GiAoTfg=
+apollo-datasource@0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/apollo-datasource/-/apollo-datasource-0.5.0.tgz#7a8c97e23da7b9c15cb65103d63178ab19eca5e9"
+  integrity sha512-SVXxJyKlWguuDjxkY/WGlC/ykdsTmPxSF0z8FenagcQ91aPURXzXP1ZDz5PbamY+0iiCRubazkxtTQw4GWTFPg==
   dependencies:
     apollo-server-caching "0.4.0"
-    apollo-server-env "2.3.0"
+    apollo-server-env "2.4.0"
 
-apollo-engine-reporting-protobuf@0.3.0:
-  version "0.3.0"
-  resolved "https://registry.npm.taobao.org/apollo-engine-reporting-protobuf/download/apollo-engine-reporting-protobuf-0.3.0.tgz#2c764c054ff9968387cf16115546e0d5b04ee9f1"
-  integrity sha1-LHZMBU/5loOHzxYRVUbg1bBO6fE=
+apollo-engine-reporting-protobuf@0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/apollo-engine-reporting-protobuf/-/apollo-engine-reporting-protobuf-0.3.1.tgz#a581257fa8e3bb115ce38bf1b22e052d1475ad69"
+  integrity sha512-Ui3nPG6BSZF8BEqxFs6EkX6mj2OnFLMejxEHSOdM82bakyeouCGd7J0fiy8AD6liJoIyc4X7XfH4ZGGMvMh11A==
   dependencies:
     protobufjs "^6.8.6"
 
-apollo-engine-reporting@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npm.taobao.org/apollo-engine-reporting/download/apollo-engine-reporting-1.1.0.tgz#10def3d3bf3f11ddb24765c19d9c81e30cb9d55c"
-  integrity sha1-EN7z078/Ed2yR2XBnZyB4wy51Vw=
+apollo-engine-reporting@1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/apollo-engine-reporting/-/apollo-engine-reporting-1.3.0.tgz#50151811a0f5e70f4a73e7092a61fec422d8e722"
+  integrity sha512-xP+Z+wdQH4ee7xfuP3WsJcIe30AH68gpp2lQm2+rnW5JfjIqD5YehSoO2Svi2jK3CSv8Y561i3QMW9i34P7hEQ==
   dependencies:
-    apollo-engine-reporting-protobuf "0.3.0"
-    apollo-graphql "^0.2.1-alpha.1"
-    apollo-server-core "2.5.0"
-    apollo-server-env "2.3.0"
+    apollo-engine-reporting-protobuf "0.3.1"
+    apollo-graphql "^0.3.0"
+    apollo-server-core "2.6.2"
+    apollo-server-env "2.4.0"
     async-retry "^1.2.1"
-    graphql-extensions "0.6.0"
-
-apollo-env@0.4.1-register.1:
-  version "0.4.1-register.1"
-  resolved "https://registry.npm.taobao.org/apollo-env/download/apollo-env-0.4.1-register.1.tgz#e8c94e21a5b3f9c45088dec47862dfe2026111c2"
-  integrity sha1-6MlOIaWz+cRQiN7EeGLf4gJhEcI=
-  dependencies:
-    core-js "3.0.0-beta.13"
-    node-fetch "^2.2.0"
-    sha.js "^2.4.11"
+    graphql-extensions "0.7.2"
 
 apollo-env@0.5.1:
   version "0.5.1"
@@ -1070,12 +1061,12 @@ apollo-env@0.5.1:
     node-fetch "^2.2.0"
     sha.js "^2.4.11"
 
-apollo-graphql@^0.2.1-alpha.1:
-  version "0.2.1-register.1"
-  resolved "https://registry.npm.taobao.org/apollo-graphql/download/apollo-graphql-0.2.1-register.1.tgz#941dd165a9428c2ea3407ab410f842c4050cea28"
-  integrity sha1-lB3RZalCjC6jQHq0EPhCxAUM6ig=
+apollo-graphql@^0.3.0:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/apollo-graphql/-/apollo-graphql-0.3.1.tgz#d13b80cc0cae3fe7066b81b80914c6f983fac8d7"
+  integrity sha512-tbhtzNAAhNI34v4XY9OlZGnH7U0sX4BP1cJrUfSiNzQnZRg1UbQYZ06riHSOHpi5RSndFcA9LDM5C1ZKKOUeBg==
   dependencies:
-    apollo-env "0.4.1-register.1"
+    apollo-env "0.5.1"
     lodash.sortby "^4.7.0"
 
 apollo-link-error@1.1.10:
@@ -1121,24 +1112,24 @@ apollo-server-caching@0.4.0:
   dependencies:
     lru-cache "^5.0.0"
 
-apollo-server-core@2.5.0:
-  version "2.5.0"
-  resolved "https://registry.npm.taobao.org/apollo-server-core/download/apollo-server-core-2.5.0.tgz#89fc28ba1018ebf9240bc3cc0c103fe705309023"
-  integrity sha1-ifwouhAY6/kkC8PMDBA/5wUwkCM=
+apollo-server-core@2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/apollo-server-core/-/apollo-server-core-2.6.2.tgz#a792b50d4df9e26ec03759a31fbcbce38361b218"
+  integrity sha512-AbAnfoQ26NPsNIyBa/BVKBtA/wRsNL/E6eEem1VIhzitfgO25bVXFbEZDLxbgz6wvJ+veyRFpse7Qi1bvRpxOw==
   dependencies:
-    "@apollographql/apollo-tools" "^0.3.6-alpha.1"
-    "@apollographql/graphql-playground-html" "^1.6.6"
+    "@apollographql/apollo-tools" "^0.3.6"
+    "@apollographql/graphql-playground-html" "1.6.20"
     "@types/ws" "^6.0.0"
-    apollo-cache-control "0.6.0"
-    apollo-datasource "0.4.0"
-    apollo-engine-reporting "1.1.0"
+    apollo-cache-control "0.7.2"
+    apollo-datasource "0.5.0"
+    apollo-engine-reporting "1.3.0"
     apollo-server-caching "0.4.0"
-    apollo-server-env "2.3.0"
+    apollo-server-env "2.4.0"
     apollo-server-errors "2.3.0"
-    apollo-server-plugin-base "0.4.0"
-    apollo-tracing "0.6.0"
+    apollo-server-plugin-base "0.5.2"
+    apollo-tracing "0.7.2"
     fast-json-stable-stringify "^2.0.0"
-    graphql-extensions "0.6.0"
+    graphql-extensions "0.7.2"
     graphql-subscriptions "^1.0.0"
     graphql-tag "^2.9.2"
     graphql-tools "^4.0.0"
@@ -1156,10 +1147,10 @@ apollo-server-core@^1.3.6, apollo-server-core@^1.4.0:
     apollo-tracing "^0.1.0"
     graphql-extensions "^0.0.x"
 
-apollo-server-env@2.3.0:
-  version "2.3.0"
-  resolved "https://registry.npm.taobao.org/apollo-server-env/download/apollo-server-env-2.3.0.tgz#f0bf4484a6cc331a8c13763ded56e91beb16ba17"
-  integrity sha1-8L9EhKbMMxqME3Y97VbpG+sWuhc=
+apollo-server-env@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/apollo-server-env/-/apollo-server-env-2.4.0.tgz#6611556c6b627a1636eed31317d4f7ea30705872"
+  integrity sha512-7ispR68lv92viFeu5zsRUVGP+oxsVI3WeeBNniM22Cx619maBUwcYTIC3+Y3LpXILhLZCzA1FASZwusgSlyN9w==
   dependencies:
     node-fetch "^2.1.2"
     util.promisify "^1.0.0"
@@ -1169,18 +1160,18 @@ apollo-server-errors@2.3.0:
   resolved "https://registry.npm.taobao.org/apollo-server-errors/download/apollo-server-errors-2.3.0.tgz#700622b66a16dffcad3b017e4796749814edc061"
   integrity sha1-cAYitmoW3/ytOwF+R5Z0mBTtwGE=
 
-apollo-server-express@2.5.0:
-  version "2.5.0"
-  resolved "https://registry.npm.taobao.org/apollo-server-express/download/apollo-server-express-2.5.0.tgz#ff6cbd3fcb8933f6316c5a5edd4db12d9a56fa65"
-  integrity sha1-/2y9P8uJM/YxbFpe3U2xLZpW+mU=
+apollo-server-express@2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/apollo-server-express/-/apollo-server-express-2.6.2.tgz#526297c01a7a32fe9215566f9fd7ff92e82f1fa0"
+  integrity sha512-nbL3noJ5KxKGg+hT8UsAA7++oHWq/KNSevfdCluWTfUNqH1vYRTvAnARx/6JM06S9zcPTfOLcqwHnDnY9zYFxA==
   dependencies:
-    "@apollographql/graphql-playground-html" "^1.6.6"
+    "@apollographql/graphql-playground-html" "1.6.20"
     "@types/accepts" "^1.3.5"
     "@types/body-parser" "1.17.0"
     "@types/cors" "^2.8.4"
     "@types/express" "4.16.1"
     accepts "^1.3.5"
-    apollo-server-core "2.5.0"
+    apollo-server-core "2.6.2"
     body-parser "^1.18.3"
     cors "^2.8.4"
     graphql-subscriptions "^1.0.0"
@@ -1208,29 +1199,29 @@ apollo-server-module-graphiql@^1.3.4, apollo-server-module-graphiql@^1.4.0:
   resolved "https://registry.npm.taobao.org/apollo-server-module-graphiql/download/apollo-server-module-graphiql-1.4.0.tgz#c559efa285578820709f1769bb85d3b3eed3d8ec"
   integrity sha1-xVnvooVXiCBwnxdpu4XTs+7T2Ow=
 
-apollo-server-plugin-base@0.4.0:
-  version "0.4.0"
-  resolved "https://registry.npm.taobao.org/apollo-server-plugin-base/download/apollo-server-plugin-base-0.4.0.tgz#38a3c37767043873dd1b07143d4e70eecbb09562"
-  integrity sha1-OKPDd2cEOHPdGwcUPU5w7suwlWI=
+apollo-server-plugin-base@0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/apollo-server-plugin-base/-/apollo-server-plugin-base-0.5.2.tgz#f97ba983f1e825fec49cba8ff6a23d00e1901819"
+  integrity sha512-j81CpadRLhxikBYHMh91X4aTxfzFnmmebEiIR9rruS6dywWCxV2aLW87l9ocD1MiueNam0ysdwZkX4F3D4csNw==
 
-apollo-server@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.npm.taobao.org/apollo-server/download/apollo-server-2.5.0.tgz#a88a550dbc5ff0c6713142d1cab3b61b4a36e483"
-  integrity sha1-qIpVDbxf8MZxMULRyrO2G0o25IM=
+apollo-server@^2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/apollo-server/-/apollo-server-2.6.2.tgz#33fe894b740588f059a7679346516ffce50377d5"
+  integrity sha512-fMXaAKIb0dX0lzcZ4zlu7ay1L596d9HTNkdn8cKuM7zmTpugZSAL966COguJUDSjUS9CaB1Kh5hl1yRuRqHXSA==
   dependencies:
-    apollo-server-core "2.5.0"
-    apollo-server-express "2.5.0"
+    apollo-server-core "2.6.2"
+    apollo-server-express "2.6.2"
     express "^4.0.0"
     graphql-subscriptions "^1.0.0"
     graphql-tools "^4.0.0"
 
-apollo-tracing@0.6.0:
-  version "0.6.0"
-  resolved "https://registry.npm.taobao.org/apollo-tracing/download/apollo-tracing-0.6.0.tgz#afc2b9cbea173dc4c315a5d98053797469518083"
-  integrity sha1-r8K5y+oXPcTDFaXZgFN5dGlRgIM=
+apollo-tracing@0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/apollo-tracing/-/apollo-tracing-0.7.2.tgz#7730159a4670bca465ac1bfa01f9902610a7aba4"
+  integrity sha512-bT4/n8Vy9DweC3+XWJelJD41FBlKMXR0OVxjLMiCe9clb4yTgKhYxRGTyh9KjmhWsng9gG/DphO0ixWsOgdXmA==
   dependencies:
-    apollo-server-env "2.3.0"
-    graphql-extensions "0.6.0"
+    apollo-server-env "2.4.0"
+    graphql-extensions "0.7.2"
 
 apollo-tracing@^0.1.0:
   version "0.1.4"
@@ -2155,11 +2146,6 @@ core-js-pure@3.1.1:
   resolved "https://registry.npm.taobao.org/core-js-pure/download/core-js-pure-3.1.1.tgz#92494ab7bae22f156ae93973a5e2738814efa7f8"
   integrity sha1-kklKt7riLxVq6TlzpeJziBTvp/g=
 
-core-js@3.0.0-beta.13:
-  version "3.0.0-beta.13"
-  resolved "https://registry.npm.taobao.org/core-js/download/core-js-3.0.0-beta.13.tgz#7732c69be5e4758887917235fe7c0352c4cb42a1"
-  integrity sha1-dzLGm+XkdYiHkXI1/nwDUsTLQqE=
-
 core-js@^2.5.3, core-js@^2.6.5:
   version "2.6.7"
   resolved "https://registry.npm.taobao.org/core-js/download/core-js-2.6.7.tgz#c2b19af9b50ec49c356ee087d6155632a889e968"
@@ -2788,43 +2774,7 @@ express-request-proxy@^2.0.0:
     type-is "^1.6.16"
     url-join "4.0.0"
 
-express@^4.0.0, express@^4.16.3:
-  version "4.17.0"
-  resolved "https://registry.npm.taobao.org/express/download/express-4.17.0.tgz#288af62228a73f4c8ea2990ba3b791bb87cd4438"
-  integrity sha1-KIr2IiinP0yOopkLo7eRu4fNRDg=
-  dependencies:
-    accepts "~1.3.7"
-    array-flatten "1.1.1"
-    body-parser "1.19.0"
-    content-disposition "0.5.3"
-    content-type "~1.0.4"
-    cookie "0.4.0"
-    cookie-signature "1.0.6"
-    debug "2.6.9"
-    depd "~1.1.2"
-    encodeurl "~1.0.2"
-    escape-html "~1.0.3"
-    etag "~1.8.1"
-    finalhandler "~1.1.2"
-    fresh "0.5.2"
-    merge-descriptors "1.0.1"
-    methods "~1.1.2"
-    on-finished "~2.3.0"
-    parseurl "~1.3.3"
-    path-to-regexp "0.1.7"
-    proxy-addr "~2.0.5"
-    qs "6.7.0"
-    range-parser "~1.2.1"
-    safe-buffer "5.1.2"
-    send "0.17.1"
-    serve-static "1.14.1"
-    setprototypeof "1.1.1"
-    statuses "~1.5.0"
-    type-is "~1.6.18"
-    utils-merge "1.0.1"
-    vary "~1.1.2"
-
-express@^4.16.2:
+express@^4.0.0, express@^4.16.2, express@^4.16.3:
   version "4.17.1"
   resolved "https://registry.npm.taobao.org/express/download/express-4.17.1.tgz#4491fc38605cf51f8629d39c2b5d026f98a4c134"
   integrity sha1-RJH8OGBc9R+GKdOcK10Cb5ikwTQ=
@@ -3635,12 +3585,12 @@ graphql-deduplicator@^2.0.1:
   resolved "https://registry.npm.taobao.org/graphql-deduplicator/download/graphql-deduplicator-2.0.2.tgz#d8608161cf6be97725e178df0c41f6a1f9f778f3"
   integrity sha1-2GCBYc9r6Xcl4XjfDEH2ofn3ePM=
 
-graphql-extensions@0.6.0:
-  version "0.6.0"
-  resolved "https://registry.npm.taobao.org/graphql-extensions/download/graphql-extensions-0.6.0.tgz#3ee3aa57fe213f90aec5cd31275f6d04767c6a23"
-  integrity sha1-PuOqV/4hP5Cuxc0xJ19tBHZ8aiM=
+graphql-extensions@0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/graphql-extensions/-/graphql-extensions-0.7.2.tgz#8711543f835661eaf24b48d6ac2aad44dbbd5506"
+  integrity sha512-TuVINuAOrEtzQAkAlCZMi9aP5rcZ+pVaqoBI5fD2k5O9fmb8OuXUQOW028MUhC66tg4E7h4YSF1uYUIimbu4SQ==
   dependencies:
-    "@apollographql/apollo-tools" "^0.3.6-alpha.1"
+    "@apollographql/apollo-tools" "^0.3.6"
 
 graphql-extensions@^0.0.x, graphql-extensions@~0.0.9:
   version "0.0.10"
