@@ -1,4 +1,9 @@
 # import * from './prisma.graphql'
+
+type SuccessMessage {
+  message: String
+}
+
 type Mutation {
   createLabel(
     name: String
@@ -23,6 +28,8 @@ type Mutation {
     description: String
     extends: ExtendsUpdateManyInput
   ): Category!
+  login(email: String!, password: String!): User!
+  logout: SuccessMessage
 }
 
 type Query {
@@ -32,4 +39,11 @@ type Query {
   articles: [Article]!
   categories(where: CategoryWhereUniqueInput): Category
   category: [Category]!
+  user: User
+}
+
+type User{
+  id: ID!
+  name: String!
+  email: String!
 }

@@ -984,6 +984,7 @@ input UserUpdateDataInput {
 
 input UserWhereUniqueInput {
   id: ID
+  email: String
 }
 
 input UserUpdateWithWhereUniqueNestedInput {
@@ -1122,6 +1123,7 @@ type Mutation {
   createArticle(data: ArticleCreateInput!): Article!
   createCategory(data: CategoryCreateInput!): Category!
   createUser(data: UserCreateInput!): User!
+  login(data: UserCreateInput!): User!
 }
 
 type Query {

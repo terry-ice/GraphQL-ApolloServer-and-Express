@@ -13,7 +13,18 @@ const Query = {
   label: forwardTo('db'),
   labels: forwardTo('db'),
   categories: forwardTo('db'),
-  category: forwardTo('db')
+  category: forwardTo('db'),
+  user(parent, args, ctx, info) {
+    // if (!ctx.request.userId) {
+    //   return null;
+    // }
+    return ctx.db.query.user(
+      {
+        where: { email: "terryloveyan@gmail.com"},
+      },
+      info
+    );
+  },
 };
 
 export default Query;
