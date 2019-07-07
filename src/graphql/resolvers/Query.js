@@ -15,16 +15,17 @@ const Query = {
   categories: forwardTo('db'),
   category: forwardTo('db'),
   user(parent, args, ctx, info) {
-    // if (!ctx.request.userId) {
-    //   return null;
-    // }
+    console.log(ctx.request.userId,'ctx');
+    if (!ctx.request.userId) {
+      return null;
+    }
     return ctx.db.query.user(
       {
-        where: { email: "terryloveyan@gmail.com"},
+        where: { id: ctx.request.userId },
       },
-      info
+      info,
     );
-  },
+  }
 };
 
 export default Query;

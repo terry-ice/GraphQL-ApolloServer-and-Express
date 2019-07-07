@@ -63,8 +63,8 @@ const Mutation = {
     return user;
   },
   logout(parent, args, ctx, info) {
-    ctx.response.clearCookie('token');
-    return { message: 'Goodbye!' };
+    // ctx.response.clearCookie('token');
+    // return { message: 'Goodbye!' };
   },
 };
 export default Mutation;

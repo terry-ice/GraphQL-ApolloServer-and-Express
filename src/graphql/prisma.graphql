@@ -1129,7 +1129,7 @@ type Mutation {
 type Query {
   labels(where: LabelWhereInput, orderBy: LabelOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Label!]
   label(where: LabelWhereUniqueInput!): Label!
-  articles(where: ArticleWhereInput, orderBy: ArticleOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Article!]
+  articles(where: ArticleWhereInput, orderBy: ArticleOrderByInput, skip: Int, after: String,before: String, first: Int, last: Int): [Article!]
   article(where: ArticleWhereUniqueInput!): Article!
   categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Category!]
   category(where: CategoryWhereUniqueInput!): Category!
