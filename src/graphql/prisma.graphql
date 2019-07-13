@@ -1133,7 +1133,7 @@ type Query {
   article(where: ArticleWhereUniqueInput!): Article!
   categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Category!]
   category(where: CategoryWhereUniqueInput!): Category!
-  user(where: UserWhereUniqueInput!): User!
+  user(where: UserWhereUniqueInput!): User
   node(
     """The ID of an object"""
     id: ID!

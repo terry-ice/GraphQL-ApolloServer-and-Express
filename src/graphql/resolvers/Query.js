@@ -15,7 +15,6 @@ const Query = {
   categories: forwardTo('db'),
   category: forwardTo('db'),
   user(parent, args, ctx, info) {
-    console.log(ctx.request.userId,'ctx');
     if (!ctx.request.userId) {
       return null;
     }
