@@ -17,7 +17,7 @@ type Category {
   name: String @unique
   slug: String
   description: String
-  extends: [Extends!] @relation(link: INLINE)
+  extends: [Extends!] @relation(link: TABLE)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -27,7 +27,7 @@ type Label {
   name: String @unique
   slug: String
   description: String
-  extends: [Extends!] @relation(name: "LabelExtends", link: INLINE)
+  extends: [Extends!] @relation(name: "LabelExtends", link: TABLE)
   article: Article @relation(name: "ArticleLabel")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
@@ -51,9 +51,9 @@ type Article {
   thumbnail: String
   state: String
   public: String
-  extends: [Extends!] @relation(name: "ArticleExtends", link: INLINE)
-  meta:  [Meta!] @relation(name: "MetaArticle", link: INLINE)
-  label: [Label!] @relation(name: "ArticleLabel",link: INLINE)
+  extends: [Extends!] @relation(name: "ArticleExtends", link: TABLE)
+  meta:  [Meta!] @relation(name: "MetaArticle", link: TABLE)
+  label: [Label!] @relation(name: "ArticleLabel",link: TABLE)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }

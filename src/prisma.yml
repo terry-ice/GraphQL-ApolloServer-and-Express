@@ -1,4 +1,3 @@
-endpoint: http://localhost:4466
-# endpoint: https://us1.prisma.sh/react/blog/dev
+endpoint: https://us1.prisma.sh/react/blog/dev
 datamodel: datamodel.graphql
 databaseType: document
