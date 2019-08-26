@@ -39,6 +39,29 @@ const Mutation = {
       info,
     );
   },
+  updateCategory(parent, args, ctx, info) {
+    const update = { ...args };
+    delete update.id;
+    return ctx.db.mutation.updateCategory(
+      {
+        data: update,
+        where: {
+          id: args.id,
+        },
+      },
+      info,
+    );
+  },
+  deleteCategory(parent, args, ctx, info) {
+    return ctx.db.mutation.deleteCategory(
+      {
+        where: {
+          id: args.id,
+        },
+      },
+      info,
+    );
+  },
   async login(parent, { email, password }, ctx, info) {
     const user = await ctx.db.query.user({ where: { email } });
     if (!user) {
@@ -53,10 +76,12 @@ const Mutation = {
       { userId: user.id },
       process.env.APP_SECRET,
     );
+
     ctx.response.cookie('token', token, {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 365,
     });
+    user.token = token;
     return user;
   },
   logout(parent, args, ctx, info) {

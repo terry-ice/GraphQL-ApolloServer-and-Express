@@ -38,6 +38,7 @@ type User {
   name: String!
   email: String! @unique
   password: String!
+  token: String
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }

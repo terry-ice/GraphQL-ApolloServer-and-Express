@@ -28,6 +28,14 @@ type Mutation {
     description: String
     extends: ExtendsUpdateManyInput
   ): Category!
+  updateCategory(
+    id: ID!
+    name: String
+    slug: String
+    description: String
+    extends: ExtendsUpdateManyInput
+  ): Category
+  deleteCategory(id: ID!): Category
   login(email: String!, password: String!): User!
   logout: SuccessMessage
 }
@@ -35,15 +43,16 @@ type Mutation {
 type Query {
   label(where: LabelWhereUniqueInput): Label
   labels: [Label]!
-  article(where: ArticleWhereUniqueInput): Article
+  article(where: ArticleWhereUniqueInput!): Article
   articles: [Article]!
-  categories(where: CategoryWhereUniqueInput): Category
-  category: [Category]!
+  categories: [Category]!
+  category(where: CategoryWhereUniqueInput!): Category
   user: User
 }
 
-type User{
+type User {
   id: ID!
   name: String!
   email: String!
+  token: String
 }

@@ -9,6 +9,7 @@ import cookieParser from 'cookie-parser';
 require('dotenv').config({ path: '../variables.env' });
 import createServer from './server';
 import * as jwt from 'jsonwebtoken';
+import db from './graphql/db';
 const app = createServer();
 
 app.express.use(cookieParser());
@@ -22,15 +23,15 @@ app.express.use((req, res, next) => {
   next();
 });
 
-// app.express.use(async (req, res, next) => {
-//   if (!req.userId) return next();
-//   const user = await db.query.user(
-//     { where: { id: req.userId } },
-//     '{ id, email, name }',
-//   );
-//   req.user = user;
-//   next();
-// });
+app.express.use(async (req, res, next) => {
+  if (!req.userId) return next();
+  const user = await db.query.user(
+    { where: { id: req.userId } },
+    '{ id, email, name }',
+  );
+  req.user = user;
+  next();
+});
 
 app.start(
   {
