@@ -18,6 +18,7 @@ type Category {
   slug: String
   description: String
   extends: [Extends!] @relation(link: TABLE)
+  article: [Article!] @relation(name: "ArticleCategory")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -53,8 +54,9 @@ type Article {
   state: String
   public: String
   extends: [Extends!] @relation(name: "ArticleExtends", link: TABLE)
-  meta:  [Meta!] @relation(name: "MetaArticle", link: TABLE)
-  label: [Label!] @relation(name: "ArticleLabel",link: TABLE)
+  meta: [Meta!] @relation(name: "MetaArticle", link: TABLE)
+  label: [Label!] @relation(name: "ArticleLabel", link: TABLE)
+  category: Category! @relation(name: "ArticleCategory", link: TABLE)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
