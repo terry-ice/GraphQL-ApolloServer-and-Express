@@ -17,6 +17,8 @@ type AggregateCategory {
   count: Int!
 }
 
+scalar DateTime
+
 type BatchPayload {
   """
   The number of nodes that have been affected by the Batch operation.
@@ -497,10 +499,12 @@ type Article implements Node {
   title: String!
   description: String
   keywords: String
-  content: String!
+  content: String
   thumbnail: String
   state: String
   public: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
   category(
     where: CategoryWhereInput
     orderBy: CategoryWhereInput
@@ -509,7 +513,7 @@ type Article implements Node {
     before: String
     first: Int
     last: Int
-  ): Article
+  ): [Category!]
   meta(
     where: MetaWhereInput
     orderBy: MetaOrderByInput
@@ -578,9 +582,11 @@ input ArticleCreateInput {
   thumbnail: String
   state: String
   public: String
-  category: ArticleUpdateManyInput
+  category: CategoryUpdateOneInput
   meta: MetaUpdateManyInput
   label: LabelUpdateManyInput
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 input ArticleUpdateInput {
@@ -591,9 +597,11 @@ input ArticleUpdateInput {
   thumbnail: String
   state: String
   public: String
-  category: ArticleUpdateManyInput
+  category: CategoryUpdateOneInput
   meta: MetaUpdateManyInput
   label: LabelUpdateManyInput
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 input ArticleUpdateDataInput {
@@ -604,9 +612,11 @@ input ArticleUpdateDataInput {
   thumbnail: String
   state: String
   public: String
-  category: ArticleUpdateManyInput
+  category: CategoryUpdateOneInput
   meta: MetaUpdateManyInput
   label: LabelUpdateManyInput
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 input ArticleUpdateWithWhereUniqueNestedInput {
@@ -978,6 +988,14 @@ input CategoryUpdateManyInput {
   disconnect: [CategoryWhereUniqueInput!]
   delete: [CategoryWhereUniqueInput!]
   update: [CategoryUpdateWithWhereUniqueNestedInput!]
+}
+
+input CategoryUpdateOneInput {
+  create: CategoryCreateInput
+  connect: CategoryWhereUniqueInput
+  disconnect: CategoryWhereUniqueInput
+  delete: CategoryWhereUniqueInput
+  update: CategoryUpdateWithWhereUniqueNestedInput
 }
 
 input CategoryWhereInput {

@@ -19,7 +19,7 @@ type Mutation {
     thumbnail: String
     state: String
     public: String
-    article: ArticleUpdateManyInput
+    category: CategoryUpdateOneInput
     meta: MetaUpdateManyInput
     label: LabelUpdateManyInput
   ): Article!
