@@ -24,6 +24,21 @@ const Mutation = {
       {
         data: {
           ...args,
+          category: {
+            connect: {
+              id: args.category,
+            },
+          },
+        },
+      },
+      info,
+    );
+  },
+  deleteArticle(parent, args, ctx, info) {
+    return ctx.db.mutation.deleteArticle(
+      {
+        where: {
+          id: args.id,
         },
       },
       info,

@@ -11,6 +11,13 @@ type Mutation {
     slug: String
     extends: ExtendsUpdateManyInput
   ): Label!
+   updateLabel(
+    id: ID!
+    name: String
+    slug: String
+    description: String
+    extends: ExtendsUpdateManyInput
+  ): Category
   createArticle(
     title: String
     description: String
@@ -19,7 +26,7 @@ type Mutation {
     thumbnail: String
     state: String
     public: String
-    category: CategoryUpdateOneInput
+    category: String
     meta: MetaUpdateManyInput
     label: LabelUpdateManyInput
   ): Article!
@@ -39,6 +46,7 @@ type Mutation {
     extends: ExtendsUpdateManyInput
   ): Category
   deleteCategory(id: ID!): Category
+  deleteArticle(id: ID!): Article
   login(email: String!, password: String!): User!
   logout: SuccessMessage
 }

@@ -585,8 +585,6 @@ input ArticleCreateInput {
   category: CategoryUpdateOneInput
   meta: MetaUpdateManyInput
   label: LabelUpdateManyInput
-  createdAt: DateTime!
-  updatedAt: DateTime!
 }
 
 input ArticleUpdateInput {
@@ -600,8 +598,6 @@ input ArticleUpdateInput {
   category: CategoryUpdateOneInput
   meta: MetaUpdateManyInput
   label: LabelUpdateManyInput
-  createdAt: DateTime!
-  updatedAt: DateTime!
 }
 
 input ArticleUpdateDataInput {
@@ -615,8 +611,6 @@ input ArticleUpdateDataInput {
   category: CategoryUpdateOneInput
   meta: MetaUpdateManyInput
   label: LabelUpdateManyInput
-  createdAt: DateTime!
-  updatedAt: DateTime!
 }
 
 input ArticleUpdateWithWhereUniqueNestedInput {
@@ -1569,6 +1563,7 @@ type PageInfo {
 type Mutation {
   createLabel(data: LabelCreateInput!): Label!
   createArticle(data: ArticleCreateInput!): Article!
+  deleteArticle(where: ArticleWhereUniqueInput!): Article!
   createCategory(data: CategoryCreateInput!): Category!
   updateCategory(
     data: CategoryUpdateInput!
