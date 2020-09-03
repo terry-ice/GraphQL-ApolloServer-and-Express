@@ -516,7 +516,7 @@ type Article implements Node {
     before: String
     first: Int
     last: Int
-  ): [Category!]
+  ): Category!
   meta(
     where: MetaWhereInput
     orderBy: MetaOrderByInput
