@@ -26,6 +26,9 @@ type BatchPayload {
   count: Long!
 }
 
+"""
+我是一个标签
+"""
 type Label implements Node {
   id: ID!
   name: String!
@@ -1525,9 +1528,6 @@ enum MutationType {
   DELETED
 }
 
-"""
-An object with an ID
-"""
 interface Node {
   """
   The id of the object.
@@ -1580,6 +1580,9 @@ type Mutation {
 
 type Query {
   labels(
+    """
+    [用户管理] 获取指定用户的信息
+    """
     where: LabelWhereInput
     orderBy: LabelOrderByInput
     skip: Int
